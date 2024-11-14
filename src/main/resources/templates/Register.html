@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+ <style>
+body {
+    background-image:url("../images/galaxy2.jpg");
+  
+
+  
+  
+} 
+
+.card-img-left {
+  width: 45%;
+    background-image:url("../images/galaxy2.jpg");
+ 
+              background-size:cover;
+       
+ }
+ 
+ .custom-bg{
+ 
+    background-image:url("../images/galaxy2.jpg");
+ 
+/*  background: rgb(2,0,36);
+ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(35,9,121,1) 35%, rgba(0,212,255,1) 100%); 
+ 
+ */ }
+ 
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+</style>
+<body>
+
+<!-- <!-- <div th:insert="~{fragments/commonUi::usermenu}">
+</div> -->
+
+ <!-- <div class="container-fluid">
+<div class="row mt-4">
+<div class="col-md-5 offset-md-3">
+
+<div class="card custom-bg">
+<h3 class="text-center my-2">Sign Up Here!!</h3>
+
+<form th:action="@{/user/save}" method="post" th:object="${user}">
+
+<div class="card-body px-4">
+
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" th:field="*{name}" placeholder="Enter here" class="form-control">
+    </div>
+  
+  
+  <div class="mb-3">
+    <label class="form-label">Email address</label>
+    <input type="email" th:field="*{email}" id="email" placeholder="Enter here" class="form-control" aria-describedby="emailHelp" >
+    <span id="emailError"></span>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  
+  <div class="mb-3">
+    <label class="form-label" >Password</label>
+    <input type="password" placeholder="Enter here" th:field="*{pwd}" class="form-control">
+  </div>
+  
+  <div class="mb-3">
+    <label class="form-label">Phone</label>
+    <input type="text" placeholder="Enter here" th:field="*{phone}" class="form-control">
+  </div>
+  
+  <div class="mb-3">
+    <label class="form-label">Address</label>
+    <textarea th:field="*{address}" placeholder="Enter here" class="form-control"></textarea>
+  </div>
+  
+  
+  
+  <div class="text-center">
+  <input type="submit" class="btn btn-outline-primary" value="Submit">
+    <input type="reset" class="btn btn-outline-" value="Reset">
+ </div>
+  </div>
+  
+ <div th:if="${message!=null}" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong th:text="${message}"></strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+</form>
+</div>
+<a th:href="@{/user/login}" class="btn btn-success">Login Here</a>
+
+</div>
+</div>
+</div> 
+  -->
+
+  <div class="container">
+    <div class="row ">
+      <div class="col-lg-10 col-xl-9 mx-auto ">
+        <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+          <div class="card-img-left d-none d-md-flex ">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">We are more than just a company</h4>
+                <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+          </div>
+          
+          <div class="card-body p-4 p-sm-5 custom-bg">
+            <h5 class="card-title text-center mb-5 fw-light fs-5 text-white">Sign Up Here!!</h5>
+            <form th:action="@{/user/save}" method="post" th:object="${user}">
+
+
+              <div class="form-floating mb-3">
+                <input type="text" th:field="*{name}" class="form-control" id="floatingInputUsername" placeholder="Username" required autofocus>
+              <span id="nameError"></span>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="email" th:field="*{email}" class="form-control" id="" placeholder="Enter email">
+                 <span id="emailError"></span>
+              </div>
+
+              
+
+              <div class="form-floating mb-3">
+                <input type="password" th:field="*{pwd}" class="form-control" id="floatingPassword" placeholder="Password">
+                  <span id="pwdError"></span>
+              
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="text" th:field="*{phone}" class="form-control" id="floatingPhone" placeholder="Phone">
+                   <span id="phoneError"></span>
+         
+              </div>
+         
+         
+         <div class="form-floating mb-3">
+           <textarea th:field="*{address}" placeholder="Enter Address" class="form-control"></textarea>
+                           <span id="addressError"></span>
+             </div>
+         
+
+
+              <div class="d-grid mb-2 text-center">
+                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Register</button>
+              </div>
+
+              <a class="d-block text-center mt-2 small" th:href="@{/user/login}">Have an account? Sign In</a>
+
+              <hr class="my-4">
+
+              
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+            <h5 th:text="${message}" class="text-danger text-center mt-4"></h5>
+
+<script>
+$("#emailError").hide();
+
+var emailError=false;
+
+
+function validateEmail(){
+	var val=$("#email").val();
+	var exp=/^[A-Za-z0-9]+\@[a-z]+\.[a-z\.]{3,20}$/;
+	if(val==''){
+		$("#emailError").show();
+		$("#emailError").html("Email field cannot be empty");
+		$("#emailError").css("color","red");
+		emailError=false;
+	}
+	else if(!exp.test(val)){
+		$("#emailError").show();
+		$("#emailError").html("Email not valid");
+		$("#emailError").css("color","red");
+		
+		emailError=false;
+	}
+	else{
+		$.ajax({
+			
+			url:'checkMail',
+			data:{'mail':val},
+			success:function(resTxt){
+				if(resTxt!=''){
+					$("#emailError").show();
+					$("#emailError").html(resTxt);
+					$("#emailError").css("color","red");
+			        emailError=false;
+				}
+				else{
+					$("#emailError").hide();
+			        emailError=true;
+
+				}
+			}
+			
+			
+		})
+		
+		
+		
+		}
+}
+
+
+    $("#email").keyup(function(){
+    	validateEmail();
+    })
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

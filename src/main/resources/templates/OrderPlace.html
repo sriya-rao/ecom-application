@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<body>
+<div th:insert="~{fragments/commonUi::usermenu}">
+</div>
+
+
+<div class="container text-center mt-4 " style="border:1px solid black;">
+
+<h4 class="text-success">Order Placed Successfully</h4>
+<br>
+<h6 >Will be delivered in 3 to 4 business days</h6>
+</div>
+<div class="text-center mt-4">
+<a th:href="@{/home/order/details}" class="btn btn-primary">View order Details</a>
+
+</div>
+</body>
+</html>

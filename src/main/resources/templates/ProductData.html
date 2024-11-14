@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<body>
+<div th:insert="~{fragments/commonUi::usermenu}">
+</div>
+
+
+<div class="container">
+
+<table class="table">
+
+<tr>
+<th>Id</th>
+<th>Product Title</th>
+<th>Product Desc</th>
+<th>Product pic Name</th>
+<th>Price</th>
+<th>Discount</th>
+<th>quantity</th>
+<th>category</th>
+
+<th>Action</th>
+</tr>
+
+
+<tr th:each="l:${list}">
+<td th:text="${l.id}"></td>
+<td th:text="${l.prodTitle}"></td>
+<td th:text="${l.prodDesc}"></td>
+<td th:text="${l.prodPicName}"></td>
+<td th:text="${l.prodPrice}"></td>
+<td th:text="${l.prodDiscount}"></td>
+<td th:text="${l.prodQty}"></td>
+<td th:text="${l.category.id}"></td>
+
+
+ <td><a th:href="@{/product/edit}">Edit</a>
+ <a th:href="@{/product/delete?id={id}(id=${l.id})}">Delete</a>
+ </td>
+ 
+
+</tr>
+
+</table>
+</div>
+
+</body>
+</html>

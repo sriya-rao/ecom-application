@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<body>
+<div th:insert="~{fragments/commonUi::usermenu}">
+</div>
+
+<div class="container-fluid ">
+
+<div th:if="${cart.size==0}" class="text-center mt-4">
+<h3>No Items in cart</h3><br>
+<a th:href="@{/home/all}" class="btn btn-primary">Add Products</a>
+</div>
+
+<div class="row mt-2">
+
+<div class="col-9">
+<div class="container">
+
+ 
+ <table class="table table-bordered table-hover mt-2" th:if=${cart.size!=0}>
+<thead class="table-dark">
+<tr>
+<th></th>
+<th>Product image</th>
+<th>Product Name</th>
+<th>UnitPrice</th>
+
+<th>Quantity</th>
+
+<th>Subtotal</th>
+<th>Delete</th>
+</tr>
+</thead>
+
+<tbody>
+<tr th:each="l,i:${cart}">
+<td th:text="${i.count}"></td>
+<td><img th:src="@{/product/image?id={id}(id=${l.product.id})}" style="height:150px;width:auto"></td>
+<td ><a th:href="@{/home/single?id={id}(id=${l.product.id})}" th:text="${l.product.prodTitle}"></a></td>
+<td th:text="${'&#8377;'+'&nbsp;'+l.product.discountedPrice}"></td>
+<td th:insert="~{fragments/new::update}">
+</td>
+<td th:text="${'&#8377;'+'&nbsp;'+l.product.discountedPrice*l.quantity}"></td>
+<td>
+ <a th:href="@{/cart/remove?prodId={id1}(id1=${l.product.id})}" class="btn btn-danger">Remove</a></td> 
+
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+
+
+
+<br>
+ 
+</div>
+
+<div class="col-2" th:if=${cart.size!=0} >
+
+ <div class="row">
+        <div class="col">
+          <h4 class="d-flex justify-content-between align-items-center ">
+            <span class="text-muted"> Total Amount</span>
+            
+            <span class="badge badge-secondary badge-pill" th:text="${qty}"></span>
+            
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Amount </h6>
+              </div>
+              <span class="text-muted" id="total" th:text="${'&#8377;'+'&nbsp;'+totalPrice}"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Shipping</h6>
+              </div>
+              <span class="text-muted" th:text="${'&#8377;'+'&nbsp;'+'0.0'}"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Promo code</h6>
+                <small>SHOP100</small>
+              </div>
+              <span class="text-success">NA</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (Rupees)</span>
+              <span id="total1" th:text="${'&#8377;'+'&nbsp;'+totalPrice}"></span>
+            </li>
+          </ul>
+          <div class="text-center">
+       <a th:href="@{/cart/checkout}" class="btn btn-primary">Check Out</a>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

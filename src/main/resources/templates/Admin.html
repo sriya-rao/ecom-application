@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<style>
+.card-text{
+
+font-size:40px;
+
+}
+</style>
+<body>
+<div th:insert="~{fragments/commonUi::usermenu}">
+</div>
+
+<div class="container">
+
+<div class="row mt-3">
+
+<div class="col-4">
+<div class="card" style="width: 18rem;">
+<div class="card-header text-center">
+  <img th:src="@{/images/users.png}" style="max-height:200px;max-width:100%;width:auto;" class="card-img-top" alt="...">
+  </div>
+  <div class="card-body ">
+    <h5 class="card-title">Users</h5>
+    <p class="card-text" th:text="${users.size}"></p>
+    <a href="#" class="btn btn-primary">Total Users</a>
+  </div>
+</div>
+</div>
+
+<div class="col-4">
+<div class="card" style="width: 18rem;">
+<div class="card-header text-center">
+
+  <img th:src="@{/images/categories.png}" style="max-height:200px;max-width:100%;width:auto;" class="card-img-top" alt="...">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Categories</h5>
+    <p class="card-text" th:text="${catlist.size}" ></p>
+      <a th:href="@{/category/load}" class="btn btn-primary">Add category</a>
+  
+ </div>
+</div>
+</div>
+
+<div class="col-4">
+<div class="card" style="width: 18rem;">
+<div class="card-header text-center">
+
+  <img th:src="@{/images/products.png}" style="max-height:200px;max-width:100%;width:auto;" class="card-img-top" alt="...">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Products</h5>
+    <p class="card-text" th:text="${list.size}"></p>
+    <a th:href="@{/product/load}" class="btn btn-primary">Add product</a>
+  </div>
+</div></div>
+
+</div>
+
+</div>
+
+
+
+</body>
+</html>

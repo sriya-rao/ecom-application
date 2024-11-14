@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<body>
+<div th:insert="~{fragments/commonUi::usermenu}">
+</div>
+
+<div class="container-fluid">
+<div class="row mt-4">
+<div class="col-md-5 offset-md-3">                         
+
+<div class="card">
+<h3 class="text-center my-2">Add Product</h3>
+
+<form th:action="@{/product/save}" method="post" th:object="${product}" enctype="multipart/form-data">
+
+<div class="card-body px-4">
+
+  <div class="mb-3">
+    <label class="form-label">Product Title</label>
+    <input type="text" th:field="*{prodTitle}" placeholder="Enter here" class="form-control">
+    </div>
+  
+  <div class="mb-3">
+    <label class="form-label">Product Category</label>
+    <select th:field="*{category.id}" class="form-control">
+    <option value="">Select</option>
+    <option th:each="c:${categories}"  th:value="${c.key}" th:text="${c.value}"></option>
+    </select>
+    </div>
+  
+  
+  
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    <textarea th:field="*{prodDesc}" placeholder="Enter here" class="form-control"></textarea>
+  </div>
+  
+  
+  <div class="mb-3">
+     
+    <label class="form-label">Choose product Image</label>
+    <input type="hidden" th:field="*{prodPicName}">
+        <input type="file" name="file" id="file">
+   
+    </div>
+   
+    <div class="mb-3">
+    <label class="form-label">Product Price</label>
+    <input type="text" th:field="*{prodPrice}" placeholder="Enter here" class="form-control">
+    </div>
+    
+    <div class="mb-3">
+    <label class="form-label">Product Discount</label>
+    <input type="text" th:field="*{prodDiscount}" placeholder="Enter here" class="form-control">
+    </div>
+  
+  <div class="mb-3">
+    <label class="form-label">Product Quantity</label>
+    <input type="text" th:field="*{prodQty}" placeholder="Enter here" class="form-control">
+    </div>
+    
+    
+  
+  
+  
+  
+  <div class="text-center">
+  <input type="submit" class="btn btn-outline-primary" value="Add Product">
+ </div>
+  </div>
+  
+  <div th:if="${message!=null}" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong th:text="${message}"></strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+ 
+
+</form>
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<body>
+<div th:insert="~{fragments/commonUi::usermenu}">
+</div>
+
+<div class="container">
+
+<table class="table">
+
+<tr>
+<th>Id</th>
+<th>User name</th>
+<th>Email</th>
+<th>Password</th>
+<th>Phone</th>
+<th>Address</th>
+<th>User pic</th>
+<th>User role</th>
+
+</tr>
+
+
+<tr th:each="l:${list}">
+<td th:text="${l.id}"></td>
+<td th:text="${l.name}"></td>
+<td th:text="${l.email}"></td>
+<td th:text="${l.pwd}"></td>
+<td th:text="${l.phone}"></td>
+<td th:text="${l.address}"></td>
+<td th:text="${l.userPic}"></td>
+ <td th:text="${l.roles}"></td>
+ 
+
+</tr>
+
+</table>
+</div>
+
+</body>
+</html>

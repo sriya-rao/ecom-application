@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<body>
+<div th:fragment="update">
+<form th:action="@{/cart/update}" method="post" >
+<table class="table">
+
+<tr>
+<td>
+<input type="number" th:value="${l.quantity}" name="qty" class="form-control">  
+</td>
+<td>
+<input type="hidden" name="prodId" th:value="${l.product.id}">
+</td>
+<td><input type="submit" value="Update" class="btn btn-success">
+</td>
+</tr>
+</table>
+</form>
+</div>
+</body>
+</html>

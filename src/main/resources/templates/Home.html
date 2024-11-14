@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<style>
+.card-header:hover{
+
+background:#e2e2e2;
+cursor:pointer;
+
+}
+</style>
+<body>
+<div th:insert="~{fragments/commonUi::usermenu}">
+</div>
+
+<div class="container-fluid">
+<strong th:text="${msg}"></strong>
+
+<div class="row mt-4 mx-2">
+
+<!-- categories section -->
+
+    <div class="col-2">
+    
+        <div class="list-group ">
+    
+   <a th:href="@{/home/all}" class="list-group-item list-group-item-action active" aria-current="true">
+    All products
+  </a>
+   
+    <div th:each="c:${catlist}">
+    
+
+    <a   th:href="@{/home/category?id={id}(id=${c.id})}"  th:text="${c.categoryName}" class="list-group-item list-group-item-action"></a>
+
+
+	</div>
+    
+    
+    </div>
+    
+    </div>
+
+
+<!-- products section  -->
+   
+   <div class="col-8">
+    
+  <div class="row mt-1">
+ <div class="col">
+      <div th:text="${message}" class="h4 text-center"></div>
+ 
+     <div class="card-columns">
+     
+         <div th:each="l:${list}">
+    
+    <div class="card">
+    <div class="container text-center mt-2">
+  <img th:src="@{/product/image?id={id}(id=${l.id})}" style="max-height:175px;max-width:100%;width:auto;" class="card-img-top" >
+  </div>
+  <div class="card-body">
+    <h5 class="card-title" >
+    <a th:href="@{/home/single?id={id}(id=${l.id})}" th:text="${l.prodTitle}" ></a>
+    </h5>
+         <span th:text="${'&#8377;'+'&nbsp;'+l.discountedPrice}"   class="btn btn-outline-primary"></span>
+    
+          <span th:text="${'&#8377;'+'&nbsp;'+l.prodPrice}" style="font-style:italic;text-decoration:line-through;"></span>
+          <span th:text="${l.prodDiscount+'%'+'&nbsp;'+'off'}" style="font-style:italic;font-size:12px;"></span>
+          <br><br>
+    <a th:href="@{/cart/add?prodId={prodId}(prodId=${l.id})}" class="btn btn-warning" >Add to cart</a>
+         <a th:href="@{/cart/single?prodId={prodId}(prodId=${l.id})}" class="btn" style=" background:#fd7e14;">Buy Now</a>
+     
+  
+  </div>
+</div>
+     
+     
+    
+        </div>
+    </div>
+    
+    </div>
+    
+    
+    </div>
+ 
+ 
+
+ 
+ 
+ 
+ 
+ </div>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

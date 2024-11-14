@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<body>
+<div th:insert="~{fragments/commonUi::usermenu}">
+</div>
+
+<table class="table">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Link</th>
+</tr>
+<tr th:each="l:${list}">
+<td th:text="${l[0]}"></td>
+<td th:text="${l[1]}"></td>
+<td><a th:href="@{/product/download}">Download</a></td>
+
+</tr>
+</table>
+
+</body>
+</html>

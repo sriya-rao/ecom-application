@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:insert="~{fragments/commonUi::head}">
+</div>
+<body>
+<div th:insert="~{fragments/commonUi::usermenu}">
+</div>
+<div class="container">
+
+<div class="row mt-3">
+
+<div class="col-6">
+
+<div class="container text-center">
+<div class="card">
+    
+    <div class="card-header">
+  <img th:src="@{/product/image?id={id}(id=${product.id})}" style="max-height:500px;width:auto;" class="card-img-top" >
+  </div>
+  
+  <div class="card-body">
+  <div class="container text-center">
+       <a th:href="@{/cart/add?prodId={prodId}(prodId=${product.id})}" class="btn btn-warning">Add to cart</a>
+       </div>
+     <span class="text-danger">Hurry up!! only 2 left</span>
+   
+   </div>      
+  
+  </div>
+</div>
+
+
+
+</div>
+
+<div class="col-6">
+
+<h4 th:text="${product.prodTitle}"></h4>
+
+    <p th:text=${product.prodDesc} style="font-style:italic"></p>
+
+    <span th:text="${'&#8377;'+'&nbsp;'+product.discountedPrice}"   class="btn btn-outline-primary"></span>
+    <span th:text="${'&#8377;'+'&nbsp;'+product.prodPrice}" style="font-style:italic;text-decoration:line-through;"></span>
+    <span th:text="${product.prodDiscount+'%'+'&nbsp;'+'off'}" style="font-style:italic;font-size:12px;"></span>
+          &nbsp;
+       &nbsp;
+         <a th:href="@{/cart/single?prodId={prodId}(prodId=${product.id})}" class="btn" style=" background:#fd7e14;">Buy Now</a>
+       
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>
