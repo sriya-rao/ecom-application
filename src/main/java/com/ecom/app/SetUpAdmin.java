@@ -19,9 +19,9 @@ public class SetUpAdmin implements CommandLineRunner{
 	public void run(String... args) throws Exception {
   
 		
-		  User user=new User(); user.setAddress("hyd");
-		  user.setEmail("sriya@gmail.com"); user.setName("sriya");
-		  user.setPhone("9875446555"); user.setPwd("sri");
+		  User user=new User(); user.setAddress("zzz");
+		  user.setEmail("xyz@gmail.com"); user.setName("xyz");
+		  user.setPhone("9776098778"); user.setPwd("xyz");
 		  user.setRoles(Set.of("admin","user")); user.setUserPic("default.png");
 		  if(service.findByEmail(user.getEmail()).isEmpty()) {
 			  service.saveUser(user);
